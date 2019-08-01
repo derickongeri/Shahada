@@ -1,0 +1,29 @@
+{% extends 'pages/base.html' %}
+{% block body %}
+<div class="student-container container-fluid">
+
+    <!--Albums-->
+    <div class="col-sm-12">
+        <h2>Student details:</h2>
+    </div>
+    {% if bio_form %}
+        {% for bio in all_bio %}
+            <div class="col-sm-4 col-lg-2">
+                <div class="thumbnail">
+                    <a href="/pages/{{bio.id}}">
+                        <img src="{{ bio.nat_id}}" class="img-responsive" style="width: 250px;">
+                    </a>
+                    <div class="caption">
+                        <h2>{{ bio.first_name + bio.last_name }}</h2>
+                        <h4>{{ bio.email_address }}</h4>
+
+                        <a href="/pages/{{bio.id}}" class="btn btn-primary btn-sm" role="button">View Details</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <h3>You don't have any albums</h3>
+    {% endif %}
+</div>
+{% endblock %}
